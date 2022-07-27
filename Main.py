@@ -6,8 +6,7 @@ class Evaluate:
       stack: A List which acts as a Stack.
   """
     # Write your code here
-
-
+    
   def __init__(self, size):
     """Inits Evaluate with top, size_of_stack and stack.
     Arguments:
@@ -24,7 +23,10 @@ class Evaluate:
     Returns:
       True if it is empty, else returns False.
     """
-      # Write your code here
+
+
+def isFull(self):
+return self.top == self.max - 1
 
 
   def pop(self):
@@ -33,7 +35,11 @@ class Evaluate:
     Returns:
       The data which is popped out if the stack is not empty.
     """
-    # Write your code here
+   if self.isEmpty():
+     print("Stack Underflow!")
+   else:
+     self.top -= 1
+      return self.arr.pop()
 
 
   def push(self, operand):
@@ -42,8 +48,13 @@ class Evaluate:
     Arguments:
       operand: The operand to be pushed.
     """
-    # Write your code here
 
+    if self.isFull():
+      print("Stack Overflow!")
+    else:
+     self.top += 1
+     self.arr.append(item)
+ 
 
   def validate_postfix_expression(self, expression):
     """
@@ -53,7 +64,11 @@ class Evaluate:
     Returns:
       True if the expression is valid, else returns False.
     """
-    # Write your code here
+    def __init__(self,max):
+     self.arr = [None]*max
+     self.top = -1
+     self.max = max
+
 
 
   def evaluate_postfix_expression(self, expression):
