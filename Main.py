@@ -49,11 +49,7 @@ return self.top == self.max - 1
       operand: The operand to be pushed.
     """
 
-    if self.isFull():
-      print("Stack Overflow!")
-    else:
-     self.top += 1
-     self.arr.append(item)
+  
  
 
   def validate_postfix_expression(self, expression):
