@@ -6,11 +6,14 @@ class Evaluate:
       stack: A List which acts as a Stack.
   """
     # Write your code here
-    
+
+
   def __init__(self, size):
     """Inits Evaluate with top, size_of_stack and stack.
     Arguments:
-      size_of_stack: An integer to set the size of stack.
+      top:An integer which points to the top most element in the stack.
+      size_of_stack: An integer which represents size of stack.
+      stack: A list which maintians the elements of stack.
     """
     self.top = -1
     self.size_of_stack = size
@@ -23,10 +26,11 @@ class Evaluate:
     Returns:
       True if it is empty, else returns False.
     """
-
-
-def isFull(self):
-return self.top == self.max - 1
+    # Write your code here
+    if self.top == -1:
+      return True
+    else:
+      return False
 
 
   def pop(self):
@@ -35,11 +39,9 @@ return self.top == self.max - 1
     Returns:
       The data which is popped out if the stack is not empty.
     """
-   if self.isEmpty():
-     print("Stack Underflow!")
-   else:
-     self.top -= 1
-      return self.arr.pop()
+    # Write your code here
+    if not self.isEmpty():
+      self.stack.pop()
 
 
   def push(self, operand):
@@ -48,9 +50,10 @@ return self.top == self.max - 1
     Arguments:
       operand: The operand to be pushed.
     """
+    # Write your code here
+    if self.top != self.size_of_stack - 1:
+      self.stack.append(operand)
 
-  
- 
 
   def validate_postfix_expression(self, expression):
     """
@@ -60,11 +63,18 @@ return self.top == self.max - 1
     Returns:
       True if the expression is valid, else returns False.
     """
-    def __init__(self,max):
-     self.arr = [None]*max
-     self.top = -1
-     self.max = max
-
+    # Write your code here
+    nums = 0
+    ops = 0
+    for element in expression:
+      if element.isnumeric():
+        nums = nums + 1
+      else:
+        ops = ops + 1
+    if ops == nums - 1:
+      return True
+    else:
+      return False
 
 
   def evaluate_postfix_expression(self, expression):
@@ -76,7 +86,27 @@ return self.top == self.max - 1
       The result of evaluated postfix expression.
     """
     # Write your code here
-
+    stack = []
+    for i in expression:
+      if i.isnumeric():
+        stack.append(int(i))
+      if len(stack) >= 2:
+        if i == '+':
+          stack[-2] = stack[-2] + stack[-1]
+          stack.pop()
+        elif i == '-':
+          stack[-2] = stack[-2] - stack[-1]
+          stack.pop()
+        elif i == '*':
+          stack[-2] = stack[-2] * stack[-1]
+          stack.pop()
+        elif i == '/':
+          stack[-2] = stack[-2] / stack[-1]
+          stack.pop()
+        elif i == '^':
+          stack[-2] = stack[-2] ^ stack[-1]
+          stack.pop()
+    return int(stack[-1])
 
 # Do not change the following code
 postfix_expression = input()  # Read postfix expression
